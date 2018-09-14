@@ -40,8 +40,8 @@ class SVClassifier:
             w = np.array(latest_optimum,latest_optimum)
             optimizied = False
             while not optimized:
-                for b in np.arange(-1*(self.max_feature_value*b_range_multiple),
-                                   self.max_feature_value*b_range_multiple,
+                for b in np.arange(-1*(self.max_feature_value*b_range),
+                                   self.max_feature_value*b_range,
                                    step*b_multiple):
                     for transformation in transforms:
                         w_t = w*transformation
@@ -75,7 +75,7 @@ class SVClassifier:
         latest_optimum = opt_choice[0][0]+step*2
 
 
-    def predict(features):i
+    def predict(features):
         classification = []
         for featureset in features:
             classification.append(np.sign(np.dot(np.array(featureset),self.w)+self.b))
@@ -83,10 +83,8 @@ class SVClassifier:
         return classification
         
 #You can change it with your data
-data = {-1:np.array([[1,7],[2,8]
-                     ,[3,8]]),1:np.array([[5,1]
-                                          ,[6,-1],
-                                          [7,3]])}
+data = {-1:np.array([[1,7],[2,8],[3,8]])
+        ,1:np.array([[5,1],[6,-1],[7,3]])}
 
 #Make an object of Classifier
 svc = SVClassifier()
